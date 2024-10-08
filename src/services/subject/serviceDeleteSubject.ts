@@ -8,7 +8,7 @@ export const serviceDeleteSubject = async (id: string): Promise<IServiceResponse
         if (!subject) {
             return {
                 data: null,
-                error: `Estudiante con id ${id} no encontrado`,
+                error: `Materia con id ${id} no encontrado`,
             };
         }
         return {

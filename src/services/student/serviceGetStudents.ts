@@ -13,6 +13,6 @@ export const serviceGetStudents = async (): Promise<IServiceResponse<IStudent[]>
         return {
             data: null,
             error: errorMessage,
-        };
+        };  
     }
 };

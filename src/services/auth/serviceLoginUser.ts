@@ -2,6 +2,9 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { IServiceResponse, IUser } from "../../interfaces";
 import modelUser from "../../models/modelUser";
+import dotenv from "dotenv"
+
+dotenv.config();
 
 export const serviceLoginUser = async (dataUser: Partial<IUser>): Promise<IServiceResponse<string | null>> => {
     const { email, password } = dataUser;
@@ -21,7 +24,7 @@ export const serviceLoginUser = async (dataUser: Partial<IUser>): Promise<IServi
             }
         }
 
-        const token = jwt.sign({ id: userExisting._id, user: userExisting.email }, 'my_secret_session', { expiresIn: '1h' });
+        const token = jwt.sign({ id: userExisting._id, user: userExisting.email }, process.env.JWT_SECRET!, { expiresIn: '1h' });
 
         return {
             data: token,
